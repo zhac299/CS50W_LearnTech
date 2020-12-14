@@ -4,3 +4,5 @@ An original project idea that I developed as part of CS50W. This Django project 
 
 A video of this project in action can be seen here:
 https://www.youtube.com/watch?v=QTjx661-6R8&ab_channel=HassanMirza
+
+Project was developed using - Python, JavaScript, HTML, CSS and Django generated SQL for database
