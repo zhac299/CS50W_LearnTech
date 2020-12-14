@@ -1,4 +1,4 @@
-# CS50W_LearnTech
+# CS50W LearnTech
 
 An original project idea that I developed as part of CS50W. This Django project functions as an online learning platform where there are two user types - student and teacher. Each account types has different permissions for instance a teacher account can upload courses and edit them whereas a student account cannot do this.
 
