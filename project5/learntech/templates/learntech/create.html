@@ -1,0 +1,30 @@
+{% extends "learntech/layout.html" %}
+
+{% block title %}
+    New Course
+{% endblock %}
+
+{% block body %}
+    {% if msg %}
+        {{ msg }}
+    {% else %}
+        <form action="{% url 'create' %}" method="post">
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="courseName" placeholder="Course Name">
+                    <br></br>
+                    <input type="text" class="form-control" name="courseTeacher" value="{{ request.user.username }}" readonly>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="courseVideo" placeholder="Enter a Youtube Link if Video is available...">
+                </div>
+                <br></br>
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" rows="20" name="courseData" placeholder="Enter Written Course Data..."></textarea>
+                </div>  
+                <br></br>
+                <input type="submit" name="submitBut" class="btn btn-primary">
+            </div> 
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <!-- Bootstrap CSS file-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        
+        {% load static %}
+        <link href="{% static 'learntech/styles.css' %}" rel="stylesheet">
+        
+        <!-- Bootstrap js files -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        {% block script %}
+        {% endblock %}    
+    </head>
+
+    <body>
+        <h1 id="title-h1"><strong>LearnTech</strong></h1>
+
+        <ul class="nav justify-content-center">
+            <ul id="nav-tabs-id" class="nav nav-tabs">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'index' %}">Home Page</a>
+                        {% if user.is_authenticated %}
+
+                            {% if request.user.isTeacher %}
+                                <a class="dropdown-item" href="{% url 'create' %}">Post New Course</a>
+                            {% endif %}
+                            
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href={% url 'profile' request.user.username %}>{{ request.user.username }}</a>
+                            <a class="dropdown-item" href="{% url 'userInbox' %}">Mail</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+        </ul>
+
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

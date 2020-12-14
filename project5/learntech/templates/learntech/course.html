@@ -1,0 +1,28 @@
+{% extends "learntech/layout.html" %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block script %}
+    {% load static %}
+        <script src="{% static 'learntech/course.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <input id="course-id" type="hidden" value="{{ theCourseID }}">
+
+    <div class="fullCourseDiv">
+        <h3>{{ title }}</h3> by <a href="/profile/{{ teacher }}">{{ teacher }}</a>
+
+        <div id="but-div"></div>
+
+        {% if video != "" %}
+            <br></br>
+            <div class="courseVideoDiv">
+                <object style="height: 390px; width: 640px"><param name="movie" value="{{ video }}"><param name="allowFullScreen" value="true"><param name="allowScriptAccess" value="always"><embed src="http://www.youtube.com/v/v1gTI4BOPUw?version=3" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390"></object>
+            </div>
+        {% endif %}
+        {{ content }}
+    </div>
+{% endblock %}
